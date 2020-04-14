@@ -1,0 +1,13 @@
+<h1>PROJECTS </h1>
+<br>
+<p>------------------------------------------</p>
+<% @projects.each do |project| %>
+	<div>
+		<h2><%= link_to project.name, project %></h2>
+		<p><%= truncate(project.description, length:100) %></p>
+		<p><%= time_ago_in_words(project.created_at) %></p>
+	</div>
+<% end %>
+<p>------------------------------------------</p>
+<br>
+<h1><%= link_to "Create Project", new_project_path %></h1>

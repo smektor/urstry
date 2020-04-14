@@ -1,0 +1,18 @@
+<%= form_for @user_story, url: {action: "create"} do |f| %>
+  <%= label_tag "Actor" %>
+  <%= f.text_field :actor %>
+  </br></br></br>
+  <%= label_tag "Goal" %>
+  <%= f.text_field :goal %>
+  </br></br></br>
+  <%= label_tag "Reason" %>
+  <%= f.text_field :reason %>
+  </br></br></br>
+  <%= label_tag "Acceptance criteria" %>
+  <%= f.text_area :criteria, size: "60x12" %>
+  </br></br></br>
+  <%= label_tag "Priority" %>
+  <%= f.text_field :priority %>
+  </br></br></br>
+  <%= f.submit "Create" %>
+<% end %>

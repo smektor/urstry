@@ -1,0 +1,16 @@
+<h1>User stories</h1>
+<br>
+<p>------------------------------------------</p>
+<% @user_stories.each do |story| %>
+	<div>
+		<h2><%= story.actor %></h2>
+    <h2><%= story.goal %></h2>
+		<h2><%= story.reason %></h2>
+		<h2><%= story.criteria %></h2>
+		<h2><%= story.priority %></h2>
+		<p><%= time_ago_in_words(story.created_at) %></p>
+	</div>
+<% end %>
+<p>------------------------------------------</p>
+
+<p><%= link_to "Create User Story", new_project_user_story_path(@project) %></p>

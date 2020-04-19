@@ -1,13 +1,15 @@
-<h1>Create New Project</h1>
+<h1>Edit Project - <%= @project.name%></h1>
 
 <%= @project.errors.full_messages.first if @project.errors.any? %>
 
-<%= form_for @project, url: {action: "create"} do |f| %>
+<%= form_for @project, url: {action: "update"} do |f| %>
   <%= label_tag "Name" %>
   <%= f.text_field :name %>
   </br></br></br>
   <%= label_tag "Description" %>
   <%= f.text_area :description, size: "60x12" %>
   </br></br></br>
-  <%= f.submit "Create" %>
+  <%= f.submit "Update" %>
 <% end %>
+
+<p><%= link_to "Cancel", @project %></p>

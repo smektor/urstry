@@ -1,14 +1,13 @@
-<h1><%= @user_story.actor %></h1>
-<br>
-<h1><%= @user_story.goal %></h1>
-<br>
-<h1><%= @user_story.reason %></h1>
-<br>
-<h1><%= @user_story.criteria %></h1>
-<br>
-<h1><%= @user_story.priority %></h1>
+<p><%= @user_story.actor %></p>
+<p><%= @user_story.goal %></p>
+<p><%= @user_story.reason %></p>
+<p><%= @user_story.criteria %></p>
+<p><%= @user_story.priority %></p>
 
 <br>
 <br>
 
-<p><%= link_to "Delete", project_user_story_path, method: :delete, data: { confirm: "Are you sure?"} %> </p>
+<p><%= link_to "Back to Project", @project%></p>
+<p><%= link_to "Edit User Story", edit_project_user_story_path(@project, @user_story) %></p>
+<p><%= link_to "Delete User Story", project_user_story_path, method: :delete, data: { confirm: "Are you sure?"} %> </p>
+<p><%= link_to "Create new User Story", new_project_user_story_path(@project) %></p>

@@ -2,21 +2,25 @@
 <h2>Description: <%= @project.description%></h2>
 
 <p><%= link_to "Create User Story", new_project_user_story_path(@project) %></p>
-<br>
+<p><%= link_to "Modify project", edit_project_path %></p>
 <p><%= link_to "Delete Project", project_path, method: :delete, data: { confirm: "Are you sure?" } %> </p>
 <br>
 <h3> USER STORIES </h3>
 <br>
 <p>------------------------------------------</p>
-<% @project.user_stories.each do |story| %>
+<% @project.user_stories.each_with_index do |story, index| %>
 	<div>
-		<h2><%= story.actor %></h2>
-    <h2><%= story.goal %></h2>
-		<h2><%= story.reason %></h2>
-		<h2><%= story.criteria %></h2>
-		<h2><%= story.priority %></h2>
+		<h1> <%= index + 1 %>. User Story</h1>
+		<p><%= link_to story.actor, project_user_story_path(@project, story) %></p>
+    <p><%= story.goal %></p>
+		<p><%= story.reason %></p>
+		<p><%= story.criteria %></p>
+		<p><%= story.priority %></p>
 
 		<p><%= time_ago_in_words(story.created_at) %></p>
 	</div>
+	<%if story != @project.user_stories.last %>
+		<p>------------------------------------------</p>
+	<%end%>
 <% end %>
 <p>------------------------------------------</p>

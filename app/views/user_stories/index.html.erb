@@ -1,5 +1,7 @@
 <h1>User stories</h1>
 <br>
+<p><%= link_to "Create User Story", new_project_user_story_path(@project) %></p>
+<br>
 <p>------------------------------------------</p>
 <% @user_stories.each do |story| %>
 	<div>
@@ -13,4 +15,3 @@
 <% end %>
 <p>------------------------------------------</p>
 
-<p><%= link_to "Create User Story", new_project_user_story_path(@project) %></p>

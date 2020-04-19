@@ -1,12 +1,12 @@
 class UserStoriesController < ApplicationController
-  before_action :find_project, only: [:index, :show, :new, :create, :destroy]
+  before_action :find_project, only: [:index, :new, :create]
+  before_action :find_user_story, only: [:show, :edit, :update, :destroy]
 
   def index
     @user_stories = @project.user_stories.all
   end
 
   def show
-    @user_story = @project.user_stories.find(params[:id])
   end
 
   def new
@@ -23,8 +23,18 @@ class UserStoriesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user_story.update(user_story_params)
+      redirect_to project_user_story_path(@project, @user_story), notice: "User story modified."
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
-    @user_story = @project.user_stories.find(params[:id])
     @user_story.destroy
     redirect_to project_path(@project)
   end
@@ -37,6 +47,11 @@ class UserStoriesController < ApplicationController
 
   def find_project
     @project = Project.find(params[:project_id])
+  end
+
+  def find_user_story
+    find_project
+    @user_story = @project.user_stories.find(params[:id])
   end
 
 end

@@ -1,5 +1,7 @@
 <h1>PROJECTS </h1>
 <br>
+<h1><%= link_to "Create Project", new_project_path %></h1>
+<br>
 <p>------------------------------------------</p>
 <% @projects.each do |project| %>
 	<div>
@@ -9,5 +11,3 @@
 	</div>
 <% end %>
 <p>------------------------------------------</p>
-<br>
-<h1><%= link_to "Create Project", new_project_path %></h1>

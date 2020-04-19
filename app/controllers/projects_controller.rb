@@ -1,16 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:edit, :show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   def index
-    @projects = Project.all.order(created_at: :desc)
+    @projects = Project.where(user_id: current_user)
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.new(project_params)
 
     if @project.save
       redirect_to @project, notice: "Project created."
@@ -25,12 +26,17 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def update
+    if @project.update(project_params)
+      redirect_to @project, notice: "Congratulation! Project modified."
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @project.destroy
     redirect_to projects_path
-  end
-
-  def update
   end
 
   private
